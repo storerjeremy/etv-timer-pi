@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ETV Timer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+
+  </head>
+  <body>
+    <div class="container">
+
+      <div class="page-header text-center">
+        <h1>ETV Timer - {{ room_name }}</h1>
+      </div>
+
+      <div class="jumbotron text-center">
+        <h1 id="countdown-display">00:00</h1>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <form id="start-reset" method="POST" action='#' class="form-inline">
+            <div class="form-group">
+              <label for="start-reset-data">Start/Reset Time (Mins)</label>
+              <input type="number" value="60" min="1" max="99" name="emit_data" class="form-control" id="start-reset-data" placeholder="Time in Mins">
+            </div>
+            <button type="submit" class="btn btn-success btn-lg">Start/Reset</button>
+            <button id="stop" class="btn btn-danger btn-lg">Stop</button>
+          </form>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-md-6 col-md-offset-2">
+          <form id="add" method="POST" action='#' class="form-inline">
+            <div class="form-group">
+              <label for="add-data">Add Time (Mins)</label>
+              <input type="number" value="5" min="1" max="30" name="emit_add_data" class="form-control" id="add-data" placeholder="Time in Mins">
+            </div>
+            <button type="submit" class="btn btn-info btn-lg">Add</button>
+          </form>
+        </div>
+        <div class="col-md-2">
+          <button id="add_minute" class="btn btn-primary btn-lg">+1 Minute</button>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-md-6 col-md-offset-2">
+          <form id="subtract" method="POST" action='#' class="form-inline">
+            <div class="form-group">
+              <label for="subtract-data">Subtract Time (Mins)</label>
+              <input type="number" value="5" min="1" max="30" name="emit_add_data" class="form-control" id="subtract-data" placeholder="Time in Mins">
+            </div>
+            <button type="submit" class="btn btn-warning btn-lg">Subtract</button>
+          </form>
+        </div>
+        <div class="col-md-2">
+          <button id="subtract_minute" class="btn btn-primary btn-lg">-1 Minute</button>
+        </div>
+      </div>
+
+
+    </div>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.1.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/socket.io.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+  </body>
+</html>
